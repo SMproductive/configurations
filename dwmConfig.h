@@ -30,8 +30,8 @@ static const Rule rules[] = {
 	{ "atom", 		NULL,	NULL,	1 << (1-1), 	0,	 -1 },
 	{ "firefox",		NULL,   NULL,	1 << (2-1),	0,       -1 },
 	{ "Pcmanfm",		NULL, 	NULL,	1 << (3-1),	0,	 -1 },
-	{ "Epdfview",		NULL, 	NULL,	1 << (4-1),	0,	 -1 },
 	{ "libreoffice",	NULL,	NULL,	1 << (4-1),	0,	 -1 },
+	{ "Chromium",		NULL,	NULL,	1 << (4-1),	0,	 -1 },
 };
 
 /* layout(s) */
