@@ -70,7 +70,7 @@ static const struct arg args[] = {
 	{ ipv4,			"{ %s|",	"enp0s20u1" },
 	{ ipv4,			"|%s }",	"enp0s20u2" },
 	{ disk_used,		"{ %s }",	"/" },
-	{ battery_perc,		"{ %s|",	"BAT0" },
+	{ battery_perc,		"{ %s%|",	"BAT0" },
 	{ battery_remaining,	"|%s }",	"BAT0" },
 	{ datetime,		"{ %s }",	"%F||%I:%M%p" },
 
