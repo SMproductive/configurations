@@ -2,6 +2,7 @@ set fileformat=unix
 "general things
 set spell
 set breakindent
+set clipboard=unnamedplus
 "style
 set bg=dark
 set incsearch "highlights search
