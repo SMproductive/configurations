@@ -1,5 +1,6 @@
 set fileformat=unix
 "general things
+filetype plugin indent on
 set spell
 set breakindent
 set clipboard=unnamedplus
@@ -10,7 +11,6 @@ syntax on
 colorscheme slate
 set number relativenumber
 set wildmode=longest,list,full
-set cindent
 "general bindings
 imap gg <Esc>
 nnoremap da ggVGd 
@@ -26,6 +26,8 @@ imap <> <><++><Esc>4hi
 imap jj <++>
 	"c
 autocmd FileType c,cpp 
+	\set cindent
+autocmd FileType c,cpp 
 	\imap // /*  */<Esc>2hi
 autocmd FileType c,cpp 
 	\imap if<Enter> <Esc>:read ~/code/if.c<Enter>kdd=2jikk
@@ -33,6 +35,7 @@ autocmd FileType c,cpp
 	\imap for<Enter> <Esc>:read ~/code/for.c<Enter>kdd=2jikk
 autocmd FileType c,cpp 
 	\imap while<Enter> <Esc>:read~/code/while.c<Enter>kdd=2jikk
+
 "ready to code
 nnoremap ,c :read ~/code/empty.c<Enter>kdd2jo
 nnoremap ,cpp :read ~/code/empty.cpp<Enter>kdd2jo
