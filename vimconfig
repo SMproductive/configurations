@@ -1,25 +1,69 @@
+"TODO filefind completion
+"TODO replacements
 set fileformat=unix
+let mapleader = " "
 "Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'arcticicestudio/nord-vim'
+Plug 'vim-syntastic/syntastic'
+Plug 'udalov/kotlin-vim' "for syntastic
+"Plug 'sebdah/vim-delve'
+"Plug 'puremourning/vimspector' TODO get it to run
+Plug 'szw/vim-maximizer'
+"Plug 'airblade/vim-rooter'
+Plug 'airblade/vim-gitgutter'
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf.vim'
+Plug 'vim-test/vim-test' "TODO kotlin
 call plug#end()
+	"vim-maximizer
+map <leader>m :MaximizerToggle<Enter>
+	"vim-test
+let test#strategy='vimterminal'
+	"syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ["python"]
+let g:syntastic_go_checkers = ["go"]
+let g:syntastic_kotlin_checkers = ["kotlinc"]
+map <leader>e :lclose<Enter>
+
 "general things
+map <leader>c <Esc>:!
+filetype on
 filetype plugin indent on
+syntax on
+set updatetime=1000
 set tabstop=4
 set shiftwidth=4
 set spell
 set breakindent
 set clipboard=unnamedplus
-"style
-set bg=dark
 set incsearch "highlights search
-syntax on
-colorscheme nord
 set number relativenumber
+set cursorline
 set wildmode=longest,list,full
+colorscheme nord
+autocmd InsertEnter * norm 5jzz5k
+	"splits
+map <C-n> <Esc>:vnew<Enter>
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 "general bindings
 imap gg <Esc>
-nnoremap da ggVGd 
+nnoremap da ggVGd
+nmap <silent> tn :TestNearest<Enter>
+nmap <silent> tf :TestFile<Enter>
+nmap <silent> ts :TestSuite<Enter>
+nmap <silent> tl :TestLast<Enter>
+nmap <silent> tv :TestVisit<Enter>
 "code editing helpers
 imap {{ {<Enter>}<Esc>ko
 imap (( ()<++><Esc>4hi
@@ -32,7 +76,7 @@ imap <> <><++><Esc>4hi
 imap jj <++>
 	"c
 autocmd FileType c,cpp 
-	\set cindent
+			\set cindent
 autocmd FileType c,cpp 
 	\imap // /*  */<Esc>2hi
 autocmd FileType c,cpp 
