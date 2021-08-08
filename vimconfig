@@ -1,37 +1,81 @@
-"TODO filefind completion
-"TODO replacements
+"TODO renaming (functions, variables)
+"TODO debugger
+"TODO git
+"TODO fuzzyfinder
 set fileformat=unix
 let mapleader = " "
 "Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'arcticicestudio/nord-vim'
-Plug 'vim-syntastic/syntastic'
-Plug 'udalov/kotlin-vim' "for syntastic
-"Plug 'sebdah/vim-delve'
+Plug 'neoclide/coc.nvim', {'branch': 'release'} "https://github.com/neoclide/coc.nvim
+"Plug 'vim-syntastic/syntastic'
 "Plug 'puremourning/vimspector' TODO get it to run
 Plug 'szw/vim-maximizer'
 "Plug 'airblade/vim-rooter'
 Plug 'airblade/vim-gitgutter'
 "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 "Plug 'junegunn/fzf.vim'
-Plug 'vim-test/vim-test' "TODO kotlin
+Plug 'vim-test/vim-test' "TODO kotlin and go
 call plug#end()
+	"coc.vim
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-clangd',
+			\ 'coc-go', 'coc-pyright', 'coc-html', 'coc-css']
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap rn <Plug>(coc-rename)
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 	"vim-maximizer
 map <leader>m :MaximizerToggle<Enter>
 	"vim-test
 let test#strategy='vimterminal'
+let test#go#runner = 'ginkgo'
+let test#java#runner = 'gradletest'
+let test#kotlin#runner = 'gradletest'
+
+let test#vim#term_position = "belowright 10"
+nmap <silent> tn :TestNearest<Enter>
+nmap <silent> tf :TestFile<Enter>
+nmap <silent> ts :TestSuite<Enter>
+nmap <silent> tl :TestLast<Enter>
+nmap <silent> tv :TestVisit<Enter>
 	"syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ["python"]
-let g:syntastic_go_checkers = ["go"]
-let g:syntastic_kotlin_checkers = ["kotlinc"]
-map <leader>e :lclose<Enter>
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_auto_jump = 3
+"let g:syntastic_aggregate_errors = 1
+"let g:syntastic_mode_map = {
+"    \ "mode": "active",
+"    \ "active_filetypes": ["c", "cpp", "python", "go", "kotlin", "html", "css"],
+"    \ "passive_filetypes": ["txt"] }
+"let g:syntastic_loc_list_height = 5
+"let g:syntastic_python_checkers = ["python"]
+"let g:syntastic_go_checkers = ["go"]
+"let g:syntastic_kotlin_checkers = ["kotlinc"]
+"map <leader>e :lclose<Enter>
 
 "general things
 map <leader>c <Esc>:!
@@ -45,25 +89,21 @@ set spell
 set breakindent
 set clipboard=unnamedplus
 set incsearch "highlights search
-set number relativenumber
+set number
 set cursorline
 set wildmode=longest,list,full
 colorscheme nord
 autocmd InsertEnter * norm 5jzz5k
+autocmd BufWritePre * %s/\s\+$//e
+"general bindings
+imap gg <Esc>
+nnoremap da ggVGd
 	"splits
 map <C-n> <Esc>:vnew<Enter>
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-"general bindings
-imap gg <Esc>
-nnoremap da ggVGd
-nmap <silent> tn :TestNearest<Enter>
-nmap <silent> tf :TestFile<Enter>
-nmap <silent> ts :TestSuite<Enter>
-nmap <silent> tl :TestLast<Enter>
-nmap <silent> tv :TestVisit<Enter>
 "code editing helpers
 imap {{ {<Enter>}<Esc>ko
 imap (( ()<++><Esc>4hi
@@ -75,21 +115,21 @@ imap '' ''<++><Esc>4hi
 imap <> <><++><Esc>4hi
 imap jj <++>
 	"c
-autocmd FileType c,cpp 
-			\set cindent
-autocmd FileType c,cpp 
-	\imap // /*  */<Esc>2hi
-autocmd FileType c,cpp 
-	\imap if<Enter> <Esc>:read ~/code/if.c<Enter>kdd=2jikk
-autocmd FileType c,cpp 
-	\imap for<Enter> <Esc>:read ~/code/for.c<Enter>kdd=2jikk
-autocmd FileType c,cpp 
-	\imap while<Enter> <Esc>:read~/code/while.c<Enter>kdd=2jikk
+autocmd FileType c,cpp
+	\ set cindent
+autocmd FileType c,cpp
+	\ imap // /*  */<Esc>2hi
+autocmd FileType c,cpp
+	\ imap if<Enter> <Esc>:read ~/code/if.c<Enter>kdd=2jikk
+autocmd FileType c,cpp
+	\ imap for<Enter> <Esc>:read ~/code/for.c<Enter>kdd=2jikk
+autocmd FileType c,cpp
+	\ imap while<Enter> <Esc>:read~/code/while.c<Enter>kdd=2jikk
 "html
-autocmd FileType html,css 
-	\set tabstop=2
-autocmd FileType html,css 
-	\set shiftwidth=2
+autocmd FileType html,css
+	\ set tabstop=2
+autocmd FileType html,css
+	\ set shiftwidth=2
 
 "ready to code
 nnoremap ,c :read ~/code/empty.c<Enter>kdd2jo
