@@ -109,7 +109,7 @@ imap {{ {<Enter>}<Esc>ko
 imap (( ()<++><Esc>4hi
 imap [[ []<++><Esc>4hi
 nnoremap <Del> %d``dl
-imap kk <Esc>/<++><Enter>"_c4l
+"imap kk <Esc>/<++><Enter>"_c4l does not work anymore
 imap "" ""<++><Esc>4hi
 imap '' ''<++><Esc>4hi
 imap <> <><++><Esc>4hi
