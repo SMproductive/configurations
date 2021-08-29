@@ -95,7 +95,6 @@ set wildmode=longest,list,full
 colorscheme nord
 autocmd InsertEnter * norm 5jzz5k
 autocmd BufWritePre * %s/\s\+$//e
-nmap c 5jzzk
 "general bindings
 imap gg <Esc>
 nnoremap da ggVGd
