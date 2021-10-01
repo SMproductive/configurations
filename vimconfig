@@ -66,11 +66,11 @@ imap {{ {<Enter>}<Esc>ko
 imap (( ()<++><Esc>4hi
 imap [[ []<++><Esc>4hi
 nnoremap <Del> %d``dl
-imap kk <Esc>/<++><Enter>"_c4l
 imap "" ""<++><Esc>4hi
 imap '' ''<++><Esc>4hi
 imap <> <><++><Esc>4hi
 imap jj <++>
+imap kk <Esc>/<++><Enter>v3lda
 "html
 autocmd FileType html,css
 	\ set tabstop=2
