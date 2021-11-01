@@ -70,7 +70,7 @@ imap "" ""<++><Esc>4hi
 imap '' ''<++><Esc>4hi
 imap <> <><++><Esc>4hi
 imap jj <++>
-imap kk <Esc>/<++><Enter>v3lda
+imap kk <Esc>/<++><Enter>v3ldi
 "html
 autocmd FileType html,css
 	\ set tabstop=2
