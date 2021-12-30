@@ -54,7 +54,6 @@ autocmd BufWritePre * %s/\s\+$//e
 "general bindings
 imap gg <Esc>
 nnoremap da ggVGd
-nmap c :q<enter>
 	"splits
 map <C-n> <Esc>:vnew<Enter>
 map <C-h> <C-w>h
@@ -63,19 +62,19 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 "code editing helpers
 imap {{ {<Enter>}<Esc>ko
-imap (( ()<++><Esc>4hi
-imap [[ []<++><Esc>4hi
+imap (( () <++><Esc>5hi
+imap [[ [] <++><Esc>5hi
 nnoremap <Del> %d``dl
-imap "" ""<++><Esc>4hi
-imap '' ''<++><Esc>4hi
-imap <> <><++><Esc>4hi
+imap "" "" <++><Esc>5hi
+imap '' '' <++><Esc>5hi
+imap <> <> <++><Esc>5hi
 imap jj <++>
-imap kk <Esc>/<++><Enter>v3lda
+imap kk <Esc>/<++><Enter>v3ldi
+"c c++
+autocmd FileType c,cpp
+	\ imap // /*  */<Esc>hhi
 "html
 autocmd FileType html,css
 	\ set tabstop=2
 autocmd FileType html,css
 	\ set shiftwidth=2
-"timestamp in second line of file
-nnoremap t 2ggddk:pu=strftime('%c')<Enter>==
-

@@ -92,4 +92,5 @@ zmodload -i zsh/complist
 # vim:filetype=zsh foldmethod=marker autoindent expandtab shiftwidth=4
 
 prompt oliver
-alias iwctl="sudo rfkill unblock 0&& sudo iwctl"
+alias iwctl="sudo rfkill unblock 1&& sudo iwctl"
+alias esp=". /opt/esp-idf/export.sh"

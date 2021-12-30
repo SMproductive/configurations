@@ -9,7 +9,7 @@
 #   https://github.com/alacritty/alacritty
 
 font:
-  size: 20
+  size: 14
 
 colors:
   primary:
