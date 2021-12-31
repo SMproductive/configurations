@@ -53,7 +53,6 @@ autocmd InsertEnter * norm 5jzz5k
 autocmd BufWritePre * %s/\s\+$//e
 "general bindings
 imap gg <Esc>
-nnoremap da ggVGd
 	"splits
 map <C-n> <Esc>:vnew<Enter>
 map <C-h> <C-w>h
@@ -72,6 +71,9 @@ imap jj <++>
 imap kk <Esc>/<++><Enter>v3ldi
 "c c++
 autocmd FileType c,cpp
+	\ imap // /*  */<Esc>hhi
+"go
+autocmd FileType go
 	\ imap // /*  */<Esc>hhi
 "html
 autocmd FileType html,css
