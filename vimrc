@@ -7,6 +7,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "https://github.com/neoclide/coc.nvim
 Plug 'szw/vim-maximizer'
 Plug 'airblade/vim-gitgutter'
+Plug 'chrisbra/Colorizer'
 call plug#end()
 	"coc.vim
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-clangd',
