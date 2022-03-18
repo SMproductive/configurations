@@ -1,8 +1,8 @@
+export EDITOR="vim"
 xbacklight -set 5&
+rm -r .surf&
 slstatus&
-feh --bg-fill --randomize ~/wallpapers/*&
-pcmanfm&
-firefox&
+st ranger&
 while true; do
 dwm > /dev/null 2>&1
 done
