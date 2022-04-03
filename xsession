@@ -1,8 +1,7 @@
 export EDITOR="vim"
 xbacklight -set 5&
-rm -r .surf&
 slstatus&
-st ranger&
-while true; do
-dwm > /dev/null 2>&1
-done
+openbsd-wallpaper&
+#while true; do
+dwm #> /dev/null 2>&1
+#done
