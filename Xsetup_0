@@ -1,0 +1,20 @@
+#!/bin/sh
+# $OpenBSD: Xsetup_0.in,v 1.1 2021/08/30 15:38:27 matthieu Exp $
+
+prefix="/usr/X11R6"
+exec_prefix="${prefix}"
+
+#${exec_prefix}/bin/xsetroot -fg \#d8dee9 -bg \#2e3440 -bitmap ${prefix}/include/X11/bitmaps/root_weave
+
+# ${exec_prefix}/bin/xconsole -geometry 480x130-0-0 -daemon -notify -verbose -fn fixed -exitOnFail
+
+#  install package openbsd-backgrounds
+#  then uncomment:
+#
+#/usr/local/bin/openbsd-wallpaper
+# 
+#sxpm OpenBSD.xpm &
+
+xsetroot -solid "#2e3440"& #Arctic dark grey
+/usr/local/bin/feh -B "#2e3440" -g 700x258+140+682 /etc/X11/xenodm/pixmaps/logo.png&
+xclock & #-sharp&

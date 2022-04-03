@@ -1,0 +1,41 @@
+! $OpenBSD: Xresources.in,v 1.3 2020/06/28 15:38:34 matthieu Exp $
+#define WHITE #d8dee9
+#define BLACK #2e3440
+#define RED #bf616a
+#define BLUE #88c0d0
+#define DKBLUE #5e81ac
+#define GREEN #a3be8c
+#define DKGREEN #8fbcbb
+
+
+xlogin*greeting: 
+xlogin*background: BLACK
+xlogin*failColor: RED
+xlogin*inpColor: BLACK
+*Foreground: WHITE
+*Background: BLACK
+xlogin*hiColor: BLACK
+xlogin*shdColor: BLACK
+
+xlogin*logoPadding: 0
+xlogin*sepWidth: 0
+xlogin*innerFramesWidth: 0
+xlogin*frameWidth: 0
+xlogin*borderWidth: 0
+
+xlogin*width: 500
+xlogin*x: 10
+xlogin*y: 10
+
+
+xclock*update: 1
+
+xclock*hands: DKBLUE
+xclock*highlight: GREEN
+
+xclock*width: 800
+xclock*height: 800
+xclock*x: 980
+xclock*y: 140
+xclock*borderWidth: 0
+xclock*padding: 0
