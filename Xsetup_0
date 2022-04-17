@@ -16,5 +16,5 @@ exec_prefix="${prefix}"
 #sxpm OpenBSD.xpm &
 
 xsetroot -solid "#2e3440"& #Arctic dark grey
-/usr/local/bin/feh -B "#2e3440" -g 700x258+140+682 /etc/X11/xenodm/pixmaps/logo.png&
+/usr/bin/feh -B "#2e3440" -g 700x258+140+682 /etc/X11/xdm/pixmaps/logo.png&
 xclock & #-sharp&
