@@ -27,12 +27,6 @@ static const Rule rules[] = {
 	 *	wm_name(string) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-//	{ "atom", 			NULL,	NULL,	1 << (1-1), 	0,	 -1 },
-//	{ "firefox",		NULL,   NULL,	1 << (2-1),		0,   -1 },
-//	{ "Pcmanfm",		NULL, 	NULL,	1 << (3-1),		0,	 -1 },
-//	{ "libreoffice",	NULL,	NULL,	1 << (4-1),		0,	 -1 },
-//	{ "Chromium",		NULL,	NULL,	1 << (4-1),		0,	 -1 },
-//	{ "pmanager",		NULL,	NULL,	0,				1,	 -1 },
 	{ "",				NULL,	NULL,	0,				0,	 -1 },
 };
 
