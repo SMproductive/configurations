@@ -1,5 +1,6 @@
 export EDITOR="vim"
-export XCURSOR_PATH=${XCURSOR_PATH}:~/.icons
+export PATH=$PATH:~/go/bin
+#export XCURSOR_PATH=${XCURSOR_PATH}:~/.icons
 export XCURSOR_THEME=Nordzy-cursors
 xbacklight -set 5&
 slstatus&
