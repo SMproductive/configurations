@@ -1,0 +1,84 @@
+#!/bin/sh
+
+## Depends on guix and git
+c=~/.config
+p=$(pwd)
+# ## Create all directrories
+# mkdir -p $c/gtk-3.0
+# mkdir -p $c/gtk-4.0
+# mkdir -p $c/guix
+# mkdir -p $c/nvim
+# mkdir -p $c/qutebrowser
+# mkdir -p $c/sway
+# mkdir -p $c/waybar
+# mkdir -p $c/doom
+mkdir -p ~/.themes
+
+# ## Link all files
+cp $p/guix/* $c/guix/
+# ln $p/gtk-3.0/* $c/gtk-3.0
+# ln $p/gtk-4.0/* $c/gtk-4.0
+# ln $p/init.vim $c/nvim
+# ln $p/init.vim ~/.vimrc
+# ln $p/qutebrowser/* $c/qutebrowser
+# ln $p/sway/* $c/sway
+# ln $p/waybar/* $c/waybar
+mkdir -p ~/.icons/default
+
+# ln $p/gitconfig ~/.gitconfig
+# ln $p/init.vim ~/.vimrc
+ln $p/ppm_passwords ~/.ppm_passwords
+# ln $p/doom.d/* $c/doom
+# ln $p/index.theme ~/.icons/default/
+# ln $p/Xresources ~/.Xresources
+# ln $p/xinitrc ~/.xinitrc
+ln $p/xinitrc ~/.xsession # FIXME guix creates symbolic links, that does not work
+
+# Custom scripts
+cd ~
+git clone git@gitlab.com:SMproductive/bin.git
+
+# ## Programs
+guix pull
+# source ~/.bash_profile
+# guix home reconfigure $p/guix-home/home-configuration.scm
+# source ~/.bash_profile
+# nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
+# nix-channel --update
+mkdir -p ~/projects
+guix home reconfigure guix-home/home-configuration.scm
+## Password manger
+cd /tmp
+git clone https://gitlab.com/SMproductive/ppm
+cd ppm
+guix shell -D ppm -- go install
+
+## Cursor theme
+cd ~
+git clone https://github.com/alvatip/Nordzy-cursors
+cd Nordzy-cursors
+./install.sh
+## Gtk theme
+cd ~/.themes
+git clone https://github.com/EliverLara/Nordic.git
+
+# Addition to qutebrowser
+pip install adblock
+
+# Vim Plug
+# Nvim version
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+# Vim version
+sh -c 'curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+# Doom emacs
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+~/.config/emacs/bin/doom install
+
+# Oh My Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+clear
+ehco "You have to install your windowmanager by yourself!"

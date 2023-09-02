@@ -1,0 +1,70 @@
+sys-kernel/gentoo-kernel-bin -initramfs
+sys-boot/grub libzfs
+
+# Virtualization
+app-emulation/virt-manager gui
+app-emulation/qemu usb usbredir spice gtk
+net-misc/spice-gtk usbredir
+sys-apps/systemd-utils udev # udev is requiered by bliss-initramfs
+sys-apps/dbus X
+net-dns/dnsmasq script
+
+# Xwayland stuff
+x11-libs/gtk+ X
+x11-libs/cairo X
+media-libs/libepoxy X
+media-libs/libglvnd X
+x11-libs/libX11 abi_x86_64 
+x11-libs/libXext abi_x86_64
+x11-libs/libxcb abi_x86_64
+# Driver
+media-libs/mesa X
+
+# Wayland stuff
+## Hyprland
+gui-wm/hyprland grimblast X
+gui-libs/xdg-desktop-portal-hyprland select-window select-region
+sys-apps/xdg-desktop-portal screencast
+dev-qt/qtbase eglfs egl opengl gles2-only
+dev-qt/qtdeclarative opengl
+
+gui-libs/wlroots seatd X x11-backend
+
+## Qutebrowser
+www-client/qutebrowser qt6 adblock pdf
+dev-qt/qtwebengine widgets alsa screencast
+dev-qt/qtgui egl eglfs
+sys-libs/zlib minizip
+dev-libs/libxml2 icu
+dev-qt/qtwebchannel qml
+dev-qt/qtcore icu
+dev-python/PyQt5 sql declarative gui opengl widgets printsupport network webchannel dbus
+
+## Pipewire
+media-video/pipewire sound-server pipewire-alsa extra gstreamer v4l
+# mpv
+media-video/mpv pipewire -xv vaapi libplacebo egl vulkan
+media-video/ffmpeg vaapi vpx opengl vulkan
+
+# Nextcloud
+app-text/xmlto text
+
+# required by dev-qt/qtx11extras-5.15.9::gentoo
+# required by media-video/simplescreenrecorder-0.4.4-r2::gentoo
+# required by simplescreenrecorder (argument)
+>=dev-qt/qtgui-5.15.9 X
+# required by dev-qt/qtgui-5.15.9::gentoo[X]
+# required by dev-qt/qtx11extras-5.15.9::gentoo
+# required by media-video/simplescreenrecorder-0.4.4-r2::gentoo
+# required by simplescreenrecorder (argument)
+>=x11-libs/libxkbcommon-1.5.0 X
+
+# required by app-crypt/swtpm-0.8.0::gentoo[gnutls]
+# required by app-emulation/libvirt-9.4.0-r3::gentoo[qemu]
+# required by dev-python/libvirt-python-9.4.0::gentoo
+# required by app-emulation/libvirt-9.3.0::gentoo[qemu]
+# required by app-emulation/libvirt-glib-4.0.0::gentoo
+# required by app-emulation/virt-manager-4.1.0::gentoo[-test]
+# required by @selected
+# required by @world (argument)
+>=net-libs/gnutls-3.7.8 pkcs11 tools

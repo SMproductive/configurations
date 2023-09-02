@@ -1,0 +1,673 @@
+#+TITLE: Doom
+#+AUTHOR: Maximilian Strele
+#+AUTO_TANGLE: t
+#+PROPERTY: header-args :tangle ~/.config/doom/config.el
+#+STARTUP: fold
+
+* Doom init
+** Input
+#+begin_src emacs-lisp :tangle  ~/.config/doom/init.el
+(doom! :input
+       ;;bidi              ; (tfel ot) thgir etirw uoy gnipleh
+       ;;chinese
+       ;;japanese
+       ;;layout            ; auie,ctsrnm is the superior home row
+#+end_src
+** Completion
+#+begin_src emacs-lisp :tangle  ~/.config/doom/init.el
+       :completion
+       company           ; the ultimate code completion backend
+       ;;helm              ; the *other* search engine for love and life
+       ;;ido               ; the other *other* search engine...
+       ;;ivy               ; a search engine for love and life
+       vertico           ; the search engine of the future
+#+end_src
+** UI
+#+begin_src emacs-lisp :tangle  ~/.config/doom/init.el
+       :ui
+       ;;deft              ; notational velocity for Emacs
+       doom              ; what makes DOOM look the way it does
+       ;; doom-dashboard    ; a nifty splash screen for Emacs
+       ;;doom-quit         ; DOOM quit-message prompts when you quit Emacs
+       ;;(emoji +unicode)  ; 🙂
+       hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
+       ;;hydra
+       indent-guides     ; highlighted indent columns
+       ;;ligatures         ; ligatures and symbols to make your code pretty again
+       ;;minimap           ; show a map of the code on the side
+       modeline          ; snazzy, Atom-inspired modeline, plus API
+       nav-flash         ; blink cursor line after big motions
+       neotree           ; a project drawer, like NERDTree for vim
+       ophints           ; highlight the region an operation acts on
+       (popup +defaults)   ; tame sudden yet inevitable temporary windows
+       ;;tabs              ; a tab bar for Emacs
+       ;;treemacs          ; a project drawer, like neotree but cooler
+       ;;unicode           ; extended unicode support for various languages
+       (vc-gutter +pretty) ; vcs diff in the fringe
+       vi-tilde-fringe   ; fringe tildes to mark beyond EOB
+       ;;window-select     ; visually switch windows
+       workspaces        ; tab emulation, persistence & separate workspaces
+       ;;zen               ; distraction-free coding or writing
+#+end_src
+** Editor
+#+begin_src emacs-lisp :tangle  ~/.config/doom/init.el
+       :editor
+       (evil +everywhere); come to the dark side, we have cookies
+       file-templates    ; auto-snippets for empty files
+       fold              ; (nigh) universal code folding
+       (format +onsave)  ; automated prettiness
+       ;;god               ; run Emacs commands without modifier keys
+       ;;lispy             ; vim for lisp, for people who don't like vim
+       ;;multiple-cursors  ; editing in many places at once
+       ;;objed             ; text object editing for the innocent
+       parinfer          ; turn lisp into python, sort of
+       ;;rotate-text       ; cycle region at point between text candidates
+       snippets          ; my elves. They type so I don't have to
+       word-wrap         ; soft wrapping with language-aware indent
+#+end_src
+** Emacs
+#+begin_src emacs-lisp :tangle  ~/.config/doom/init.el
+       :emacs
+       dired             ; making dired pretty [functional]
+       electric          ; smarter, keyword-based electric-indent
+       ;;ibuffer         ; interactive buffer management
+       undo              ; persistent, smarter undo for your inevitable mistakes
+       vc                ; version-control and Emacs, sitting in a tree
+#+end_src
+** Term
+#+begin_src emacs-lisp :tangle  ~/.config/doom/init.el
+       :term
+       eshell            ; the elisp shell that works everywhere
+       ;;shell             ; simple shell REPL for Emacs
+       ;;term              ; basic terminal emulator for Emacs
+       vterm             ; the best terminal emulation in Emacs
+#+end_src
+** Checkers
+#+begin_src emacs-lisp :tangle  ~/.config/doom/init.el
+       :checkers
+       syntax              ; tasing you for every semicolon you forget
+       (spell +flyspell) ; tasing you for misspelling mispelling
+       ;;grammar           ; tasing grammar mistake every you make
+#+end_src
+** Tools
+#+begin_src emacs-lisp :tangle  ~/.config/doom/init.el
+       :tools
+       ;;ansible
+       ;;biblio            ; Writes a PhD for you (citation needed)
+       (debugger +lsp)          ; FIXME stepping through code, to help you add bugs
+       ;;direnv
+       ;;docker
+       editorconfig      ; let someone else argue about tabs vs spaces
+       ;;ein               ; tame Jupyter notebooks with emacs
+       (eval +overlay)     ; run code, run (also, repls)
+       ;;gist              ; interacting with github gists
+       lookup              ; navigate your code and its documentation
+       lsp               ; M-x vscode
+       magit             ; a git porcelain for Emacs
+       ;;make              ; run make tasks from Emacs
+       ;;pass              ; password manager for nerds
+       pdf               ; pdf enhancements
+       ;;prodigy           ; FIXME managing external services & code builders
+       rgb               ; creating color strings
+       ;;taskrunner        ; taskrunner for all your projects
+       ;;terraform         ; infrastructure as code
+       ;;tmux              ; an API for interacting with tmux
+       ;;tree-sitter       ; syntax and parsing, sitting in a tree...
+       ;;upload            ; map local to remote projects via ssh/ftp
+#+end_src
+** OS
+#+begin_src emacs-lisp :tangle  ~/.config/doom/init.el
+       :os
+       ;;(:if IS-MAC macos)  ; improve compatibility with macOS
+       tty               ; improve the terminal Emacs experience
+#+end_src
+** Lang
+#+begin_src emacs-lisp :tangle  ~/.config/doom/init.el
+       :lang
+       ;;agda              ; types of types of types of types...
+       ;;beancount         ; mind the GAAP
+       (cc +lsp)         ; C > C++ == 1
+       ;;clojure           ; java with a lisp
+       ;;common-lisp       ; if you've seen one lisp, you've seen them all
+       ;;coq               ; proofs-as-programs
+       ;;crystal           ; ruby at the speed of c
+       ;;csharp            ; unity, .NET, and mono shenanigans
+       ;;data              ; config/data formats
+       ;;(dart +flutter)   ; paint ui and not much else
+       ;;dhall
+       ;;elixir            ; erlang done right
+       ;;elm               ; care for a cup of TEA?
+       emacs-lisp        ; drown in parentheses
+       ;;erlang            ; an elegant language for a more civilized age
+       ;;ess               ; emacs speaks statistics
+       ;;factor
+       ;;faust             ; dsp, but you get to keep your soul
+       ;;fortran           ; in FORTRAN, GOD is REAL (unless declared INTEGER)
+       ;;fsharp            ; ML stands for Microsoft's Language
+       ;;fstar             ; (dependent) types and (monadic) effects and Z3
+       ;;gdscript          ; the language you waited for
+       (go +lsp)         ; the hipster dialect
+       ;;(graphql +lsp)    ; Give queries a REST
+       ;;(haskell +lsp)    ; a language that's lazier than I am
+       ;;hy                ; readability of scheme w/ speed of python
+       ;;idris             ; a language you can depend on
+       json              ; At least it ain't XML
+       ;;(java +lsp)       ; the poster child for carpal tunnel syndrome
+       ;;javascript        ; all(hope(abandon(ye(who(enter(here))))))
+       ;;julia             ; a better, faster MATLAB
+       ;;kotlin            ; a better, slicker Java(Script)
+       latex             ; writing papers in Emacs has never been so fun
+       ;;lean              ; for folks with too much to prove
+       ;;ledger            ; be audit you can be
+       ;;lua               ; one-based indices? one-based indices
+       markdown          ; writing docs for people to ignore
+       ;;nim               ; python + lisp at the speed of c
+       ;;nix               ; I hereby declare "nix geht mehr!"
+       ;;ocaml             ; an objective camel
+       (org +present)               ; organize your plain life in plain text
+       ;;php               ; perl's insecure younger brother
+       ;;plantuml          ; diagrams for confusing people more
+       ;;purescript        ; javascript, but functional
+       python            ; beautiful is better than ugly
+       ;;qt                ; the 'cutest' gui framework ever
+       ;;racket            ; a DSL for DSLs
+       ;;raku              ; the artist formerly known as perl6
+       ;;rest              ; Emacs as a REST client
+       ;;rst               ; ReST in peace
+       ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
+       ;;(rust +lsp)       ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       ;;scala             ; java, but good
+       (scheme +guile)   ; a fully conniving family of lisps
+       sh                ; she sells {ba,z,fi}sh shells on the C xor
+       ;;sml
+       ;;solidity          ; do you need a blockchain? No.
+       ;;swift             ; who asked for emoji variables?
+       ;;terra             ; Earth and Moon in alignment for performance.
+       ;;web               ; the tubes
+       yaml              ; JSON, but readable
+       ;;zig               ; C, but simpler
+#+end_src
+** Email
+#+begin_src emacs-lisp :tangle  ~/.config/doom/init.el
+       :email
+       ;;(mu4e +org +gmail)
+       ;;notmuch
+       ;;(wanderlust +gmail)
+#+end_src
+** App
+#+begin_src emacs-lisp :tangle  ~/.config/doom/init.el
+       :app
+       ;;calendar
+       ;;emms
+       ;;everywhere        ; *leave* Emacs!? You must be joking
+       ;;irc               ; how neckbeards socialize
+       ;;(rss +org)        ; emacs as an RSS reader
+       ;;twitter           ; twitter client https://twitter.com/vnought
+#+end_src
+** Config
+#+begin_src emacs-lisp :tangle  ~/.config/doom/init.el
+       :config
+       ;;literate
+       (default +bindings +smartparens))
+#+end_src
+* COMMENT EXWM
+** Package
+#+begin_src emacs-lisp :tangle ~/.config/doom/packages.el
+(package! exwm) ; Is needed for doom to recognice it
+#+end_src
+** Custom functions
+*** Function keys and lock
+#+begin_src emacs-lisp
+(defun brighter ()
+  (interactive)
+  (start-process-shell-command "brighter" nil "brightnessctl set 5%+"))
+(defun darker ()
+  (interactive)
+  (start-process-shell-command "darker" nil "brightnessctl set 5%-"))
+(defun louder ()
+  (interactive)
+  (start-process-shell-command "louder" nil "pactl set-sink-volume 0 +5%"))
+(defun quieter ()
+  (interactive)
+  (start-process-shell-command "quieter" nil "pactl set-sink-volume 0 -5%"))
+(defun mute ()
+  (interactive)
+  (start-process-shell-command "mute" nil "pactl set-sink-mute 0 toggle"))
+(defun lock ()
+  (interactive)
+  (start-process-shell-command "lock" nil "slock"))
+  #+end_src
+*** Tiling
+:INFO:
+Recommended usage:
+1. tile
+2. Open process
+3. tile-cleanup
+:END:
+#+begin_src emacs-lisp
+(defun dynamic-tile ()
+  (+evil/window-move-left)
+  (split-window-vertically)
+  (evil-window-move-very-top)
+  (windmove-down)
+  (evil-window-move-far-left)
+  (switch-to-buffer "*Messages*"))
+(defun dynamic-tile-cleanup ()
+  (sleep-for 4) ; Use delay time suitable for you
+  (delete-windows-on "*scratch*")
+  (delete-windows-on "*Messages*"))
+  #+end_src
+*** Terminal
+#+begin_src emacs-lisp
+(defun dynamic-terminal ()
+  (interactive)
+  (dynamic-tile)
+  (+vterm/here nil) ; FIXME text makes line break on half the screen even when in fullscreen
+  (delete-windows-on "*scratch*")
+  (delete-windows-on "*Messages*"))
+#+end_src
+** General
+#+begin_src emacs-lisp
+(use-package! exwm
+  :config
+  (require 'exwm-config)
+  (exwm-config-example)
+  (setq exwm-manage-force-tiling 1)
+  (setq exwm-workspace-minibuffer-position 'top)
+  (setq exwm-workspace-number 10)
+  (setq focus-follows-mouse t)
+#+end_src
+** Global prefixes
+#+begin_src emacs-lisp
+(setq exwm-input-prefix-keys
+      '((?\M-x)))
+#+end_src
+** Global keys
+*** Function keys
+#+begin_src emacs-lisp
+(setq exwm-input-global-keys
+      `(
+        ;; Function keys
+        ([XF86MonBrightnessUp] . brighter)
+        ([XF86MonBrightnessDown] . darker)
+        ([XF86AudioRaiseVolume] . louder)
+        ([XF86AudioLowerVolume] . quieter)
+        ([XF86AudioMute] . mute)
+#+end_src
+*** Kill, close and reset
+#+begin_src emacs-lisp
+([?\s-X] . lock)
+([?\s-C] . kill-buffer-and-window)
+([?\s-d] . delete-window)
+([?\s-q] . exwm-reset)
+([?\s-Q] . kill-emacs)
+#+end_src
+*** Switch and spawn
+#+begin_src emacs-lisp
+([?\s-\[] . switch-to-next-buffer)
+([?\s-\]] . switch-to-prev-buffer)
+([s-return] . dynamic-terminal)
+([?\s-w] . exwm-workspace-switch)
+([?\s-b] . switch-to-buffer)
+;;([s-tab] . exwm-workspace-switch-to-previous) ; FIXME in test
+([?\s-m] . exwm-workspace-move-window)
+([?\s-p] . (lambda (command)	;single line command
+             (interactive (list (read-shell-command "Command: ")))
+             (dynamic-tile)
+             (start-process-shell-command command nil command)
+             (dynamic-tile-cleanup)))
+#+end_src
+*** Move and escape
+#+begin_src emacs-lisp
+([?\M-a] . keyboard-escape-quit)
+;;  ([?\M-k] . edwina-select-previous-window)
+;;  ([?\M-j] . edwina-select-next-window)
+;;  ([?\M-l] . edwina-inc-mfact)
+;;  ([?\M-h] . edwina-dec-mfact)
+;;  ([?\M-i] . edwina-inc-master)
+;;  ([?\M-d] . edwina-dec-master)
+([?\s-h] . enlarge-window-horizontally)
+([?\s-l] . shrink-window-horizontally)
+([?\s-j] . evil-window-next)
+([?\s-k] . evil-window-prev)
+([?\s-H] . +evil/window-move-left)
+([?\s-L] . +evil/window-move-right)
+([?\s-J] . +evil/window-move-down)
+([?\s-K] . +evil/window-move-up)
+,@(mapcar (lambda (i)		;Workspace movements M-0 -> M-9
+            `(,(kbd (format "s-%d" i)) .
+              (lambda ()
+                (interactive)
+                (exwm-workspace-switch-create ,i))))
+          (number-sequence 0 9))
+#+end_src
+*** Modeline and mode
+#+begin_src emacs-lisp
+([?\s-M] . exwm-layout-toggle-mode-line)
+([?\s-i] . exwm-input-release-keyboard)
+#+end_src
+*** Scratch, Split and resize
+#+begin_src emacs-lisp
+([?\s-\;] . +evil:open-scratch-buffer)
+([?\s-f] . delete-other-windows)
+([?\s-v] . split-window-horizontally)
+([?\s-s] . split-window-vertically)))
+#+end_src
+** Hooks
+#+begin_src emacs-lisp
+(add-hook 'exwm-init-hook
+          (lambda () (exwm-workspace-switch 1)))
+(add-hook 'exwm-update-title-hook
+          (lambda () (exwm-workspace-rename-buffer exwm-title))))
+#+end_src
+* Look
+** Line numbers
+#+begin_src emacs-lisp
+(setq display-line-numbers-type t)
+#+end_src
+** Theme
+#+begin_src emacs-lisp
+(setq doom-theme 'doom-nord-aurora)
+#+end_src
+** Font
+#+begin_src emacs-lisp
+(setq doom-font (font-spec :family "JetBrainsMono" :size 16))
+#+end_src
+** Modeline
+#+begin_src emacs-lisp
+(after! doom-modeline
+  (setq display-time-format "%Y-%m-%d")
+  (setq display-time-day-and-date 1)
+  (display-time-mode 1)
+  (display-battery-mode 1)
+  (setq doom-modeline-height 0)) ; Let the font size determine the height
+#+end_src
+* Coding
+** LSP
+#+begin_src emacs-lisp
+(add-hook! lsp-clangd
+  (c-set-style "bsd")
+  (setq c-file-style "bsd")
+  (setq lsp-clients-clangd-args
+        '("-j=3"
+          "--all-scopes-completion=true"
+          "--clang-tidy"
+          "--completion-style=detailed"
+          "--header-insertion=iwyu"
+          "--pch-storage=memory"
+          "--header-insertion-decorators=1"))
+  (set-lsp-priority! 'clangd 2))
+#+end_src
+
+** FIXME Debugger
+#+begin_src emacs-lisp
+(map! :leader
+      :desc "Debug edit template" :n "d t" #'dap-debug-edit-template)
+(map! :leader
+      :desc "Debug hydra" :n "d h" #'dap-hydra)
+(use-package! dap-mode
+  :hook (prog-mode . dap-mode)
+  :init
+   (require 'dap-cpptools)
+ :config
+ (setq dap-auto-configure-features '())
+ (dap-ui-mode 1))
+#+end_src
+** TU Graz stuff
+#+begin_src emacs-lisp
+(defun tu-settings ()
+(interactive)
+(setq
+display-fill-column-indicator-column 120
+indent-tabs-mode nil
+tab-width 2)
+(global-display-fill-column-indicator-mode t))
+(map! :leader
+      :desc "TU settings" :n "t u" #'tu-settings)
+#+end_src
+
+* General ease
+** Dired
+#+begin_src emacs-lisp
+(map! :leader
+      :desc "Launch dired" :n "d d" #'dired)
+(evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
+(evil-define-key 'normal dired-mode-map (kbd "l") 'dired-find-file)
+#+end_src
+** Cheatsheets
+#+begin_src emacs-lisp
+(defun open-cheatsheet ()
+  (interactive)
+  (doom/find-file-in-other-project "~/cheatsheets/")
+  (flyspell-mode 0)
+  (read-only-mode t))
+(map! :leader
+      :desc "Open cheatsheet" :n "f c" #'open-cheatsheet)
+#+end_src
+** Calc
+#+begin_src emacs-lisp
+(map! :leader
+      :desc "Open calculator" :n "o c" #'calc)
+#+end_src
+** Qutebrowser
+#+begin_src emacs-lisp
+(setq
+browse-url-browser-function 'browse-url-generic
+browse-url-generic-program "qutebrowser"
+)
+#+end_src
+* Org
+** Key maps
+#+begin_src emacs-lisp
+(define-key evil-motion-state-map (kbd "M-l") 'org-metaright)
+(define-key evil-motion-state-map (kbd "M-h") 'org-metaleft)
+(define-key evil-motion-state-map (kbd "M-k") 'org-metaup)
+(define-key evil-motion-state-map (kbd "M-j") 'org-metadown)
+#+end_src
+
+** Variables
+#+begin_src emacs-lisp
+(after! org
+  ;; Variables
+  (setq
+   org-startup-with-latex-preview t
+   org-pretty-entities t
+   org-pretty-entities-include-sub-superscripts t))
+#+end_src
+** Modes
+- Numbered Headings
+#+begin_src emacs-lisp
+(add-hook! org-mode
+  (org-num-mode t))
+#+end_src
+** Auto tangle
+#+begin_src emacs-lisp
+(use-package! org-auto-tangle
+  :defer t
+  :hook (org-mode . org-auto-tangle-mode))
+#+end_src
+- Package
+#+begin_src emacs-lisp :tangle ~/.config/doom/packages.el
+(package! org-auto-tangle)
+#+end_src
+** Reveal
+#+begin_src emacs-lisp
+(map! :leader
+      :desc "Export to reveal html" :n "e r" #'org-re-reveal-export-to-html )
+#+end_src
+** LaTeX
+- Shortcut
+#+begin_src emacs-lisp
+(map! :leader
+      :desc "Export to pdf with latex" :n "e p" #'org-latex-export-to-pdf)
+#+end_src
+- Some Variables
+#+begin_src emacs-lisp
+(with-eval-after-load 'ox-latex
+  (setq org-latex-listings 't) ;; For code snippets
+;; Hyperef underline links
+   (setq org-latex-hyperref-template "\\hypersetup{
+    pdfborderstyle={/S/U/W 1},
+    linkbordercolor=black,
+    citebordercolor=black,
+    filebordercolor=black,
+    urlbordercolor=black
+}")) ;; Code snippets
+#+end_src
+* Modes based on files
+#+begin_src emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
+#+end_src
+* COMMENT Test
+- Packages
+#+begin_src emacs-lisp :tangle ~/.config/doom/packages.el
+(package! cape)
+#+end_src
+- Configuration
+#+begin_src emacs-lisp
+#+end_src
+* COMMENT Tabnine (AI powered coding)
+- Package
+#+begin_src emacs-lisp :tangle ~/.config/doom/packages.el
+(package! company-tabnine :recipe (:host github :repo "TommyX12/company-tabnine"))
+#+end_src
+- Config
+  #+begin_src emacs-lisp
+(after! company
+  (setq +lsp-company-backends '(company-tabnine :separate company-capf company-yasnippet))
+  (setq company-tabnine-auto-balance nil)
+  (setq company-show-numbers t)
+  (setq company-idle-delay 0))
+
+  #+end_src
+
+* COMMENT Codeium (AI powered coding)
+- Package
+#+begin_src emacs-lisp :tangle ~/.config/doom/packages.el
+(package! codeium :recipe (:host github :repo "Exafunction/codeium.el"))
+#+end_src
+
+- Example config
+#+begin_src emacs-lisp
+;; we recommend using use-package to organize your init.el
+(use-package! codeium
+    ;; if you use straight
+    ;; :straight '(:type git :host github :repo "Exafunction/codeium.el")
+    ;; otherwise, make sure that the codeium.el file is on load-path
+
+    :init
+    ;; use globally
+    ;; (add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
+    ;; or on a hook
+    (add-hook 'python-mode-hook
+        (lambda ()
+            (setq-local completion-at-point-functions '(codeium-completion-at-point))))
+    (add-hook 'c++-mode-hook
+        (lambda ()
+            (setq-local completion-at-point-functions '(codeium-completion-at-point))))
+    (add-hook 'go-mode-hook
+        (lambda ()
+            (setq-local completion-at-point-functions '(codeium-completion-at-point))))
+
+    ;; if you want multiple completion backends, use cape (https://github.com/minad/cape):
+    ;; (add-hook 'python-mode-hook
+    ;;     (lambda ()
+    ;;         (setq-local completion-at-point-functions
+    ;;             (list (cape-super-capf #'codeium-completion-at-point #'lsp-completion-at-point)))))
+    ;; an async company-backend is coming soon!
+
+    ;; codeium-completion-at-point is autoloaded, but you can
+    ;; optionally set a timer, which might speed up things as the
+    ;; codeium local language server takes ~0.2s to start up
+    ;; (add-hook 'emacs-startup-hook
+    ;;  (lambda () (run-with-timer 0.1 nil #'codeium-init)))
+
+    :defer t ;; lazy loading, if you want
+    :config
+    (setq use-dialog-box nil) ;; do not use popup boxes
+
+    ;; if you don't want to use customize to save the api-key
+    ;; (setq codeium/metadata/api_key "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+
+    ;; get codeium status in the modeline
+    (setq codeium-mode-line-enable
+        (lambda (api) (not (memq api '(CancelRequest Heartbeat AcceptCompletion)))))
+    (add-to-list 'mode-line-format '(:eval (car-safe codeium-mode-line)) t)
+    ;; alternatively for a more extensive mode-line
+    ;; (add-to-list 'mode-line-format '(-50 "" codeium-mode-line) t)
+
+    ;; use M-x codeium-diagnose to see apis/fields that would be sent to the local language server
+    (setq codeium-api-enabled
+        (lambda (api)
+            (memq api '(GetCompletions Heartbeat CancelRequest GetAuthToken RegisterUser auth-redirect AcceptCompletion))))
+    ;; you can also set a config for a single buffer like this:
+    ;; (add-hook 'python-mode-hook
+    ;;     (lambda ()
+    ;;         (setq-local codeium/editor_options/tab_size 4)))
+
+    ;; You can overwrite all the codeium configs!
+    ;; for example, we recommend limiting the string sent to codeium for better performance
+    (defun my-codeium/document/text ()
+        (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (min (+ (point) 1000) (point-max))))
+    ;; if you change the text, you should also change the cursor_offset
+    ;; warning: this is measured by UTF-8 encoded bytes
+    (defun my-codeium/document/cursor_offset ()
+        (codeium-utf8-byte-length
+            (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (point))))
+    (setq codeium/document/text 'my-codeium/document/text)
+    (setq codeium/document/cursor_offset 'my-codeium/document/cursor_offset))
+#+end_src
+- Company integration
+#+begin_src emacs-lisp
+(after! company
+    (setq-default
+        company-idle-delay 0.05
+        company-require-match nil
+        company-minimum-prefix-length 0
+        ;; get only preview
+     company-frontends '(company-preview-frontend)))
+        ;; also get a drop down
+    ;; company-frontends '(company-pseudo-tooltip-frontend company-preview-frontend))
+#+end_src
+* COMMENT Application framework
+** Configuration
+#+begin_src emacs-lisp
+(use-package eaf
+  :load-path "~/.config/emacs/site-lisp/emacs-application-framework"
+  :custom
+  ; See https://github.com/emacs-eaf/emacs-application-framework/wiki/Customization
+  (eaf-browser-continue-where-left-off t)
+  (eaf-browser-enable-adblocker t)
+  (browse-url-browser-function 'eaf-open-browser)
+  :config
+  (defalias 'browse-web #'eaf-open-browser)
+  (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
+  (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding)
+  (eaf-bind-key take_photo "p" eaf-camera-keybinding)
+  (eaf-bind-key nil "M-q" eaf-browser-keybinding)) ;; unbind, see more in the Wiki
+(require 'eaf-browser)
+
+
+#+end_src
+* COMMENT mu4e
+#+begin_src emacs-lisp
+(after! mu4e
+  (setq sendmail-program (executable-find "msmtp")
+        send-mail-function #'smtpmail-send-it
+        message-sendmail-f-is-evil t
+        message-sendmail-extra-arguments '("--read-envelope-from")
+        message-send-mail-function #'message-send-mail-with-sendmail))
+#+end_src
+- Folders
+#+begin_src emacs-lisp
+(set-email-account! "bar.com"
+  '((mu4e-sent-folder       . "/Gmail/Sent Mail")
+    (mu4e-drafts-folder     . "/Gmail/Drafts")
+    (mu4e-trash-folder      . "/Gmail/Trash")
+    (mu4e-refile-folder     . "/Gmail/All Mail")
+    (smtpmail-smtp-user     . "user@gmail.com")
+    (user-mail-address      . "user@gmail.com")    ;; only needed for mu < 1.4
+    (mu4e-compose-signature . "---\nYours truly\nThe Baz"))
+#+end_src
+#  LocalWords:  EXWM Org Dired Neotree Modeline Treemacs Cheatsheets Calc mu
+

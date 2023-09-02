@@ -1,0 +1,25 @@
+daemonize
+color=000000
+font="JetBrains Mono"
+indicator-radius=200
+indicator-thickness=20
+line-color=2E3440
+ring-color=D08770
+inside-color=4C566A
+key-hl-color=8FBCBB
+separator-color=A3BE8C
+text-color=ECEFF4
+text-caps-lock-color=""
+line-ver-color=E5E9F0
+ring-ver-color=E5E9F0
+inside-ver-color=2E3440
+text-ver-color=E5E9F0
+ring-wrong-color=BF616A
+text-wrong-color=BF616A
+inside-wrong-color=EBCB8B
+inside-clear-color=EBCB8B
+text-clear-color=B48EAD
+ring-clear-color=B48EAD
+line-clear-color=8FBCBB
+line-wrong-color=8FBCBB
+bs-hl-color=88C0D0

@@ -1,0 +1,44 @@
+{
+    "layer": "bottom",
+    // "modules-left": ["dwl/tags"],
+    "modules-left": ["wlr/workspaces"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["battery", "clock"],
+
+    // "dwl/tags": {
+    // "num-tags": 9,
+    // "disable-click": false
+    // },
+    "hyprland/window": {
+        "max-length": 50,
+        "separate-outputs": true
+    },
+     "wlr/workspaces": {
+         "on-click": "activate",
+         "format": "{icon}",
+         "on-scroll-up": "hyprctl dispatch workspace m-1 > /dev/null",
+         "on-scroll-down": "hyprctl dispatch workspace m+1 > /dev/null",
+         "format-icons": {
+             "1": "",
+             "2": "",
+             "3": "",
+             "4": "",
+             "5": "",
+             "6": "",
+             "7": "",
+             "8": "",
+             "9": "",
+             "urgent": "",
+             "focused": "",
+             "default": ""
+         }
+     },
+    "battery": {
+        "format": "{icon} {capacity}% - {time}",
+        "format-icons": ["", "", "", "", ""]
+
+    },
+    "clock": {
+        "format": " - {:%Y-%m-%d - %H:%M}"
+    }
+}
