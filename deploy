@@ -27,7 +27,6 @@ mkdir -p ~/.icons/default
 
 # ln $p/gitconfig ~/.gitconfig
 # ln $p/init.vim ~/.vimrc
-ln $p/ppm_passwords ~/.ppm_passwords
 # ln $p/doom.d/* $c/doom
 # ln $p/index.theme ~/.icons/default/
 # ln $p/Xresources ~/.Xresources
