@@ -21,50 +21,39 @@ x11-libs/libxcb abi_x86_64
 media-libs/mesa X
 
 # Wayland stuff
+gui-libs/wlroots seatd X x11-backend
 ## Hyprland
 gui-wm/hyprland grimblast X
 gui-libs/xdg-desktop-portal-hyprland select-window select-region
 sys-apps/xdg-desktop-portal screencast
-dev-qt/qtbase eglfs egl opengl gles2-only
-dev-qt/qtdeclarative opengl
-
-gui-libs/wlroots seatd X x11-backend
 
 ## Qutebrowser
-www-client/qutebrowser qt6 adblock pdf
-dev-qt/qtwebengine widgets alsa screencast
-dev-qt/qtgui egl eglfs
-sys-libs/zlib minizip
-dev-libs/libxml2 icu
-dev-qt/qtwebchannel qml
-dev-qt/qtcore icu
-dev-python/PyQt5 sql declarative gui opengl widgets printsupport network webchannel dbus
+www-client/qutebrowser adblock qt6 pdf
+dev-qt/qtwebengine system-icu widgets screencast
 
 ## Pipewire
 media-video/pipewire sound-server pipewire-alsa extra gstreamer v4l
 # mpv
-media-video/mpv pipewire -xv vaapi libplacebo egl vulkan
-media-video/ffmpeg vaapi vpx opengl vulkan
+media-video/mpv pipewire -xv libplacebo vulkan -opengl
+media-video/ffmpeg vpx libplacebo vulkan
 
 # Nextcloud
 app-text/xmlto text
 
-# required by dev-qt/qtx11extras-5.15.9::gentoo
-# required by media-video/simplescreenrecorder-0.4.4-r2::gentoo
-# required by simplescreenrecorder (argument)
->=dev-qt/qtgui-5.15.9 X
-# required by dev-qt/qtgui-5.15.9::gentoo[X]
-# required by dev-qt/qtx11extras-5.15.9::gentoo
-# required by media-video/simplescreenrecorder-0.4.4-r2::gentoo
-# required by simplescreenrecorder (argument)
->=x11-libs/libxkbcommon-1.5.0 X
-
-# required by app-crypt/swtpm-0.8.0::gentoo[gnutls]
-# required by app-emulation/libvirt-9.4.0-r3::gentoo[qemu]
-# required by dev-python/libvirt-python-9.4.0::gentoo
-# required by app-emulation/libvirt-9.3.0::gentoo[qemu]
-# required by app-emulation/libvirt-glib-4.0.0::gentoo
-# required by app-emulation/virt-manager-4.1.0::gentoo[-test]
-# required by @selected
-# required by @world (argument)
->=net-libs/gnutls-3.7.8 pkcs11 tools
+# required by www-client/qutebrowser-3.0.0::gentoo[python_single_target_python3_11,qt6,-python_single_target_python3_10]
+# required by qutebrowser (argument)
+>=dev-qt/qtbase-6.5.2-r2 icu dbus
+# required by dev-python/PyQt6-WebEngine-6.5.0::gentoo[widgets]
+# required by www-client/qutebrowser-3.0.0::gentoo[python_single_target_python3_11,qt6]
+# required by qutebrowser (argument)
+>=dev-python/PyQt6-6.5.2 qml dbus webchannel
+# required by dev-qt/qtwebengine-6.5.2-r1::gentoo
+# required by dev-python/PyQt6-WebEngine-6.5.0::gentoo
+# required by www-client/qutebrowser-3.0.0::gentoo[python_single_target_python3_11,qt6]
+# required by qutebrowser (argument)
+>=dev-libs/libxml2-2.11.5 icu
+# required by dev-qt/qtwebengine-6.5.2-r1::gentoo
+# required by dev-python/PyQt6-WebEngine-6.5.0::gentoo
+# required by www-client/qutebrowser-3.0.0::gentoo[python_single_target_python3_11,qt6]
+# required by qutebrowser (argument)
+>=sys-libs/zlib-1.2.13-r1 minizip
