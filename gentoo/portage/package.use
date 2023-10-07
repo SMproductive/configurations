@@ -31,6 +31,9 @@ sys-apps/xdg-desktop-portal screencast
 www-client/qutebrowser adblock qt6 pdf
 dev-qt/qtwebengine system-icu widgets screencast
 
+## Emacs
+app-editors/emacs gtk gui threads xft xattr
+
 ## Pipewire
 media-video/pipewire sound-server pipewire-alsa extra gstreamer v4l
 # mpv
@@ -57,3 +60,10 @@ app-text/xmlto text
 # required by www-client/qutebrowser-3.0.0::gentoo[python_single_target_python3_11,qt6]
 # required by qutebrowser (argument)
 >=sys-libs/zlib-1.2.13-r1 minizip
+# required by app-editors/emacs-29.1-r1::gentoo
+# required by emacs (argument)
+>=app-emacs/emacs-common-1.9 gui
+# required by net-libs/webkit-gtk-2.40.5-r410::gentoo
+# required by app-editors/emacs-29.1-r1::gentoo[xwidgets,gui,-X,gtk]
+# required by emacs (argument)
+>=media-libs/harfbuzz-8.0.1 icu

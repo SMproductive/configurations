@@ -131,7 +131,7 @@ config.bind('<Ctrl-j>', 'completion-item-focus next', mode='command')
 
 ## Bindings for normal mode
 config.bind('ch', 'history-clear')
-config.bind('<Alt-x>', 'set-cmd-text :')
+config.bind('<Alt-x>', 'cmd-set-text :')
 config.bind('A', 'adblock-update')
 config.bind('~', 'hint links spawn mpv {hint-url}')
 config.bind('!', 'hint links spawn mpv --vid=no {hint-url}')
@@ -143,8 +143,8 @@ config.bind('X', 'hint links spawn foot -e yt-dlp -x --audio-quality=0 {hint-url
 config.bind('xb', 'config-cycle statusbar.show always never')
 config.bind('xt', 'config-cycle tabs.show always never')
 config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
-config.bind('<Alt-s>', 'set-cmd-text :set content.javascript.enabled true')
-config.bind('<Alt-c>', 'set-cmd-text :set content.cookies.accept')
+config.bind('<Alt-s>', 'cmd-set-text :set content.javascript.enabled true')
+config.bind('<Alt-c>', 'cmd-set-text :set content.cookies.accept')
 
 ## Bug fix
 # c.qt.chromium.sandboxing = 'disable-all'

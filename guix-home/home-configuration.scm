@@ -113,7 +113,7 @@
  (packages (specifications->packages (list "curl"
                                            "dconf"
                                            "editorconfig-core-c"
-                                           "emacs-next-pgtk"
+                                           "emacs-pgtk"
                                            "emacs-pdf-tools"
                                            "emacs-vterm"
                                            "fd" ;; For emacs file search
@@ -137,7 +137,7 @@
                                            ;; System stuff
                                            ;; "sway"
                                            ;; "fzf"
-                                           "waybar-experimental"
+                                           ;;"waybar-experimental"
                                            "swayidle"
                                            ;; "swaylock"
                                            ;; "qtwayland@5"
